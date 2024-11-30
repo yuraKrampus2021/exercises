@@ -251,13 +251,42 @@ function extractProperty() {
 
 
 //13
+function makeDescOrder(num) {
+    const str = num.toString().split('')
+    const res = str.sort((n1, n2) => n2 - n1)
 
+    return +res.join('')
+}
 
 //14
+function findSingleNum(nums) {
+    let res = 0
 
+    for (const num of nums) {
+        res = counterOfSymbols(nums, num)
+
+        if (res === 1) {
+            return num;
+        }
+    }
+}
+
+function counterOfSymbols(arr, symb) {
+    return arr.join('').split(symb).length - 1;
+}
 
 //15
+function adviseBefore(target, advice) {
+    return function wrapper(...args) {
+        const adviceResult = advice(...args);
 
+        if (Array.isArray(adviceResult)) {
+            return target(...adviceResult);
+        } else {
+            return target(...args);
+        }
+    };
+}
 
 //16
 
