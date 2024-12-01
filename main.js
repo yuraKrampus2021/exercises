@@ -289,16 +289,63 @@ function adviseBefore(target, advice) {
 }
 
 //16
+function findStray(nums) {
+    let validNumber = 0;
 
+    for (const num of nums) {
+        validNumber = counterOfSymbols(nums, num);
+
+        if (validNumber === 1) {
+            return num;
+        }
+    }
+}
+
+function counterOfSymbols(arr, symb) {
+    return arr.filter(num => num === symb).length;
+}
 
 //17
+function isLeapYear(year) {
 
+    if (Number.isInteger(year / 400)) {
+        return true;
+    }
+
+    if (Number.isInteger(year / 4) && !Number.isInteger(year / 100)) {
+        return true;
+    }
+
+    return false
+}
 
 //18
+function detectDuplicates(...args) {
+    let res = 0;
 
+    for (const a of args) {
+        res = counterOfSymbols(args, a);
+
+        if (res > 1) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+function counterOfSymbols(arr, s) {
+    return arr.filter(elem => elem === s).length;
+}
 
 //19
-
+function filterNumbers(objects, nums) {
+    for (const func of objects) {
+        if (typeof func === 'function') {
+            return nums.filter(func);
+        }
+    }
+}
 
 //20
 
